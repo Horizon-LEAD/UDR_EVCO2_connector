@@ -49,7 +49,7 @@ def strdir(path):
 
 
 def main():
-    """Main method of Parcel Generation Model.
+    """Main method of UDR_EVCO2 connector
     """
 
     # command line argument parsing

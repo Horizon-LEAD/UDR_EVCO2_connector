@@ -7,7 +7,7 @@ import pandas as pd
 
 def udr_evco2_connector(df_UDR_output,vehicle_type_flag):
 
-	df_udr = pd.read_excel('output.xlsx')
+	df_udr = pd.read_excel(df_UDR_output)
 
 	df_cons = df_udr
 	df_ev_cons = df_cons.drop(['energy_kWh','total_distance_km'], axis=1)

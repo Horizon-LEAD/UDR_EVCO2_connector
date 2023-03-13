@@ -1,0 +1,87 @@
+{
+    "name": "Parcel Market",
+    "description":"The Parcel Market model calculates [...].",
+    "version": "1.0.0",
+    "status":"draft",
+    "types": [
+        {"name": "Network Model", "description":"Network models deal with routing and allocation to road networks."}
+    ],
+    "dockerImage":"registry.gitlab.com/inlecom/lead/models/parcel-market:latest",
+    "url": "https://github.com/Horizon-LEAD/Parcel_Market",
+    "modelData":  [
+        {
+            "name": "UDR output",
+            "variableName": "odr_output",
+            "description": "The path of the UDR output file.",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "file",
+                "description": "",
+                "dataType": "file",
+                "extension": "xlsx",
+                "validators": [
+                    {
+                        "name": "required",
+                        "description": "required",
+                        "validatorType": "required",
+                        "value": ""
+                    }
+                ],
+                "objectKeys": []
+            }
+        },
+        {
+            "name": "Vehicle Type Enum",
+            "variableName": "vehicle_type",
+            "description": "An integer defining the vehicle type(0: Electric Super Soco CPX 12, 1: Electric VAN Maxus eDelivery 125cc)",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "number",
+                "description": "",
+                "dataType": "number",
+                "validators": [
+                    {
+                        "name": "required",
+                        "description": "required",
+                        "validatorType": "required",
+                        "value": ""
+                    }
+                ],
+                "objectKeys": []
+            }
+        },
+        {
+            "name": "output-directory",
+            "variableName": "OUTDIR",
+            "description": "Output directory",
+            "isOutput": false,
+            "isOutputDir": true,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "string",
+                "description": "",
+                "dataType": "string",
+                "extension": null,
+                "validators": [
+                    {
+                        "name": "required",
+                        "description": "required",
+                        "validatorType": "required",
+                        "value": ""
+                    }
+                ],
+                "objectKeys": []
+            }
+        }
+    ]
+}

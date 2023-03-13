@@ -1,13 +1,10 @@
 {
-    "name": "Parcel Market",
-    "description":"The Parcel Market model calculates [...].",
+    "name": "UDR-2-EVCO2",
+    "description":"Translates the data retrieved from the UDR model into the format accepted by the EVCO2 model.",
     "version": "1.0.0",
     "status":"draft",
-    "types": [
-        {"name": "Network Model", "description":"Network models deal with routing and allocation to road networks."}
-    ],
-    "dockerImage":"registry.gitlab.com/inlecom/lead/models/parcel-market:latest",
-    "url": "https://github.com/Horizon-LEAD/Parcel_Market",
+    "dockerImage":"registry.gitlab.com/inlecom/lead/models/udr-2-evco2:latest",
+    "url": "https://github.com/Horizon-LEAD/UDR_EVCO2_connector",
     "modelData":  [
         {
             "name": "UDR output",

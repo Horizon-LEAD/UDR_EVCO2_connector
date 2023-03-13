@@ -1,22 +1,15 @@
+"""UDR-2-EVCO2
 
-import sys
-import os 
-import argparse
-from datetime import datetime
+Translates the data retrieved from the UDR model into the format accepted by the EVCO2 model.
+"""
 
 import logging
-from logging.handlers import RotatingFileHandler
-from os import environ
-from os.path import isfile, join, abspath, exists
+from os.path import isfile, isdir
 from sys import argv
 from argparse import (ArgumentParser, RawTextHelpFormatter,
                       ArgumentDefaultsHelpFormatter, ArgumentTypeError)
 
-from dotenv import dotenv_values
-
-#from .envctl import parse_env_values
-# from .proc import start
-from .UDR_EVCO2 import udr_evco2_connector
+from .proc import run
 
 
 LOG_FILE_MAX_BYTES = 50e6
@@ -42,7 +35,7 @@ def strfile(path):
 def strdir(path):
     """Argparse type checking method
     string path for file should exist"""
-    if exists(path):
+    if isdir(path):
         return path
     raise ArgumentTypeError("Input directory does not exist")
 
@@ -56,22 +49,21 @@ def main():
     parser = ArgumentParser(description=__doc__,
                             formatter_class=RawDefaultsHelpFormatter)
 
-    parser.add_argument('UDR_output', type=strfile,
+    parser.add_argument('udr_output', type=strfile,
                         help='The path of the UDR output (xlxs)')
-
-
     parser.add_argument('vehicle_type_flag', type=int,
-                        help='if vehicle type flag == 1 for fleet of electric motorbikes, otherwise we have fleet of electric VANs')
+                        help='if vehicle type flag == 1 for fleet of electric motorbikes, '
+                             'otherwise we have fleet of electric VANs')
+    parser.add_argument('out_dir', type=strdir, help='The output directory')
 
     args = parser.parse_args(argv[1:])
 
     #print(args)
     #print(args.CPs, args.k)
     #res = start(args.ORDERS, args.CPs)
-    res = udr_evco2_connector(args.UDR_output,args.vehicle_type_flag)
+    res = run(args.udr_output, args.vehicle_type_flag, args.out_dir)
     print(res)
+
 
 if __name__ == "__main__":
     main()
-
-
